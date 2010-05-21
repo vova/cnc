@@ -22,7 +22,7 @@ class Train < ActiveRecord::Base
   end
 
   def line_length
-    LINES[line_name].last
+    get_line(line_name.to_s).last[:distance]
   end
 
   def coords
