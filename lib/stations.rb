@@ -51,7 +51,7 @@ module Stations
 def self.get_distance_between point1, point2
 	radius = 6371; # km
 	dLat = toRad(point2[:lat]-point1[:lat]);
-	dLon = toRad(point2[:lng]-point2[:lng]); 
+	dLon = toRad(point2[:lng]-point1[:lng]); 
 	a = Math.sin(dLat/2) * Math.sin(dLat/2) +
         Math.cos(toRad(point1[:lat])) * Math.cos(toRad(point2[:lat])) * 
         Math.sin(dLon/2) * Math.sin(dLon/2); 
@@ -69,11 +69,13 @@ def self.get_line color
  end
  
  the_start = line.shift
+ distance=0
  res = line.map do |st| 
-	distance = get_distance_between the_start[:coordinates], st[:coordinates]
-	{:id=>st[:id], :distance=>distance}
+	distance+= get_distance_between(the_start[:coordinates], st[:coordinates])
+	the_start = st
+	{:id=>st[:id], :distance=>distance }
  end
- [{:id=>the_start[:id], :distance=>0}] + res
+ res=[{:id=>the_start[:id], :distance=>0}] + res
 end
 
 end

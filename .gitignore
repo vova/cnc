@@ -1,11 +1,10 @@
 .bundle
 db/*.sqlite3
-log/*.log
+log/*
 tmp/**/*
 *swp
 *~
 db/schema.rb
 *.rbc
 vendor/bundle/*
-public/stylesheets/*.css
 tags
