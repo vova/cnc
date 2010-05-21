@@ -21,6 +21,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Bundle gems for certain environments:
 # gem 'rspec', :group => :test
-# group :test do
-#   gem 'webrat'
-# end
+group :test do
+  gem "rspec-rails",      ">= 2.0.0.beta.8"
+  gem 'factory_girl',     '>= 1.2.4', :require => false
+end
