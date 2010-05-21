@@ -45,8 +45,10 @@ STATIONS = [
           { :id => 44, :color => 'blue', :coordinates => { :lat => 50.51222576184578, :lng => 30.49851894378662 }, :name => "Minskaya" },
           { :id => 45, :color => 'blue', :coordinates => { :lat => 50.52248585562935, :lng => 30.498991012573242 }, :name => "Geroev Dnepra" }
         ]
-		
-def get_distance_between point1, point2
+
+module Stations
+
+def self.get_distance_between point1, point2
 	radius = 6371; # km
 	dLat = toRad(point2[:lat]-point1[:lat]);
 	dLon = toRad(point2[:lng]-point2[:lng]); 
@@ -57,11 +59,11 @@ def get_distance_between point1, point2
 	radius * c;
 end
 
-def toRad degrees
+def self.toRad degrees
     degrees * (Math::PI / 180)
 end
 
-def get_line color
+def self.get_line color
  line = STATIONS.select do |st|
 	color==st[:color]
  end
@@ -72,4 +74,6 @@ def get_line color
 	{:id=>st[:id], :distance=>distance}
  end
  [{:id=>the_start[:id], :distance=>0}] + res
+end
+
 end
