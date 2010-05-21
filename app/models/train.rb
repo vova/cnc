@@ -8,7 +8,7 @@ class Train < ActiveRecord::Base
 
   def update_travelled_length(time_at)
     self.last_seen_time ||= Time.now
-    self.travelled_distance = (time_at - last_seen_time) * VELOCITY
+    self.travelled_distance += (time_at - last_seen_time) * VELOCITY
     self.last_seen_time = time_at
     save
   end
