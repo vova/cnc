@@ -670,3 +670,25 @@ Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:41:21
   Processing by HomeController#index as HTML
 Rendered home/index.html.erb within layouts/application (3.3ms)
 Completed 200 OK in 19ms (Views: 18.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-05-21 21:01:51
+
+ActionController::RoutingError (No route matches "/"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-05-21 21:01:53
+
+ActionController::RoutingError (No route matches "/"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-05-21 21:02:13
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 17ms (Views: 16.8ms | ActiveRecord: 0.0ms)
