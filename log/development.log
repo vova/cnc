@@ -1,0 +1,672 @@
+  [1m[36mSQL (1.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (4.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (2.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.4ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Started GET "/home" for 127.0.0.1 at 2010-05-21 19:23:14
+
+ActionController::RoutingError (No route matches "/home"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/home/idnex" for 127.0.0.1 at 2010-05-21 19:23:19
+
+ActionController::RoutingError (No route matches "/home/idnex"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:23:22
+  Processing by HomeController#index as HTML
+ERROR: compiling _render_template__595535318_34604500_0 RAISED compile error
+/media/work/rubyshift/cnc/app/views/layouts/application.html.erb:41: syntax error, unexpected '['
+...put_buffer.append= ( station.[ :coordinates ][ :lng ] );@out...
+                              ^
+/media/work/rubyshift/cnc/app/views/layouts/application.html.erb:43: syntax error, unexpected kEND, expecting ')'
+');             end 
+                   ^
+/media/work/rubyshift/cnc/app/views/layouts/application.html.erb:59: syntax error, unexpected kENSURE, expecting ')'
+/media/work/rubyshift/cnc/app/views/layouts/application.html.erb:61: syntax error, unexpected kEND, expecting ')'
+Function body:           def _render_template__595535318_34604500_0(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "layouts/application";_old_output_buffer = output_buffer;;@output_buffer = ActionView::OutputBuffer.new; __in_erb_template=true ;@output_buffer.safe_concat('<!DOCTYPE html>
+<html>
+<head>
+  <title>Rlz</title>
+  ');@output_buffer.append= ( stylesheet_link_tag :all );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( javascript_include_tag :defaults );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  
+  <script 
+        src="http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=ABQIAAAAJyV1ORtpp9xhLyvSADHp1xRPdtMTe9TeYLcHs6Ihbwt_ci8wnRTKYW9rBdd7x_A0bp-DVbzp4BMhqw" 
+        type="text/javascript"></script>
+  
+  
+  <script type="text/javascript">
+      var geocoder = null;
+      var map = null;
+      
+      function addStationOnMap( id, color, name, lat, lng ) {
+        var options = {
+        title: \'#\' + id + \' \' + name
+        };
+
+        
+        var marker = new GMarker( new GLatLng( lat, lng ), options );
+        map.addOverlay( marker );            
+      }
+        
+
+      function MapInit() {
+        geocoder = new GClientGeocoder();
+        map = new GMap2( document.getElementById( "map" ) );
+        map.setCenter( new GLatLng( 50.464853086055115, 30.354784727096558100), 3 );
+        map.setUIToDefault();
+        map.disableScrollWheelZoom();   
+        
+');@output_buffer.append_if_string=          STATIONS.each do |station| 
+@output_buffer.safe_concat('            addStationOnMap(
+                ');@output_buffer.append= ( station[ :id ] );@output_buffer.safe_concat(',
+                ');@output_buffer.append= ( station[ :color ] );@output_buffer.safe_concat(',
+                ');@output_buffer.append= ( station[ :name ] );@output_buffer.safe_concat(',
+                ');@output_buffer.append= ( station[ :coordinates ][ :lat ] );@output_buffer.safe_concat(',
+                ');@output_buffer.append= ( station.[ :coordinates ][ :lng ] );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('                );
+');             end 
+         end 
+@output_buffer.safe_concat('      }
+    </script>
+  
+  
+  ');@output_buffer.append= ( csrf_meta_tag );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  
+</head>
+<body>
+
+');@output_buffer.append= ( yield );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('
+</body>
+</html>
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, self.output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /media/work/rubyshift/cnc/app/views/layouts/application.html.erb:61:in `compile'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_view/template.rb:45:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications/instrumenter.rb:18:in `instrument'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications.rb:48:in `__send__'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications.rb:48:in `instrument'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_view/template.rb:44:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_view/render/layouts.rb:84:in `_render_layout'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_view/render/rendering.rb:61:in `_render_template'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications/instrumenter.rb:18:in `instrument'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications.rb:48:in `__send__'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications.rb:48:in `instrument'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_view/render/rendering.rb:55:in `_render_template'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_view/render/rendering.rb:25:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/rendering.rb:113:in `_render_template'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/rendering.rb:107:in `render_to_body'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/rendering.rb:100:in `render_to_string'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/rendering.rb:91:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/rendering.rb:17:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/local/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/instrumentation.rb:77:in `cleanup_view_runtime'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-3.0.0.beta3/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/instrumentation.rb:38:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/base.rb:153:in `process_action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/rendering.rb:11:in `process_action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications/instrumenter.rb:18:in `instrument'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications.rb:48:in `__send__'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications.rb:48:in `instrument'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/instrumentation.rb:28:in `process_action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/callbacks.rb:18:in `process_action'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/callbacks.rb:433:in `_run__738958071__process_action__199225275__callbacks'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/callbacks.rb:404:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/callbacks.rb:404:in `_run_process_action_callbacks'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/callbacks.rb:88:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/callbacks.rb:88:in `run_callbacks'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/rescue.rb:8:in `process_action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/base.rb:123:in `process'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/rendering.rb:39:in `process'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal.rb:84:in `dispatch'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal.rb:124:in `action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/routing/route_set.rb:29:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/routing/route_set.rb:29:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-mount-0.6.3/lib/rack/mount/route_set.rb:148:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-mount-0.6.3/lib/rack/mount/code_generation.rb:89:in `recognize'
+/usr/local/lib/ruby/gems/1.8/gems/rack-mount-0.6.3/lib/rack/mount/code_generation.rb:66:in `optimized_each'
+/usr/local/lib/ruby/gems/1.8/gems/rack-mount-0.6.3/lib/rack/mount/code_generation.rb:88:in `recognize'
+/usr/local/lib/ruby/gems/1.8/gems/rack-mount-0.6.3/lib/rack/mount/route_set.rb:139:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/routing/route_set.rb:458:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-3.0.0.beta3/lib/active_record/query_cache.rb:31:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-3.0.0.beta3/lib/active_record/connection_adapters/abstract/query_cache.rb:35:in `cache'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-3.0.0.beta3/lib/active_record/query_cache.rb:11:in `cache'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-3.0.0.beta3/lib/active_record/query_cache.rb:30:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-3.0.0.beta3/lib/active_record/connection_adapters/abstract/connection_pool.rb:365:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/head.rb:14:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/methodoverride.rb:24:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/params_parser.rb:19:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/flash.rb:167:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/session/cookie_store.rb:107:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/cookies.rb:202:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/callbacks.rb:410:in `_run_call_callbacks'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/callbacks.rb:88:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/callbacks.rb:88:in `run_callbacks'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/sendfile.rb:105:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/show_exceptions.rb:48:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/railties-3.0.0.beta3/lib/rails/rack/logger.rb:13:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/runtime.rb:17:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/lock.rb:11:in `synchronize'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/static.rb:30:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/railties-3.0.0.beta3/lib/rails/application.rb:132:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/railties-3.0.0.beta3/lib/rails/application.rb:81:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/railties-3.0.0.beta3/lib/rails/application.rb:81:in `method_missing'
+/usr/local/lib/ruby/gems/1.8/gems/railties-3.0.0.beta3/lib/rails/rack/log_tailer.rb:15:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/content_length.rb:13:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/handler/webrick.rb:48:in `service'
+/usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/handler/webrick.rb:14:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/server.rb:155:in `start'
+/usr/local/lib/ruby/gems/1.8/gems/railties-3.0.0.beta3/lib/rails/commands/server.rb:62:in `start'
+/usr/local/lib/ruby/gems/1.8/gems/railties-3.0.0.beta3/lib/rails/commands.rb:42
+script/rails:9:in `require'
+script/rails:9
+
+ActionView::Template::Error (compile error
+/media/work/rubyshift/cnc/app/views/layouts/application.html.erb:41: syntax error, unexpected '['
+...put_buffer.append= ( station.[ :coordinates ][ :lng ] );@out...
+                              ^
+/media/work/rubyshift/cnc/app/views/layouts/application.html.erb:43: syntax error, unexpected kEND, expecting ')'
+');             end 
+                   ^
+/media/work/rubyshift/cnc/app/views/layouts/application.html.erb:59: syntax error, unexpected kENSURE, expecting ')'
+/media/work/rubyshift/cnc/app/views/layouts/application.html.erb:61: syntax error, unexpected kEND, expecting ')') on line #41 of /media/work/rubyshift/cnc/app/views/layouts/application.html.erb:
+38:                 <%= station[ :color ] %>,
+39:                 <%= station[ :name ] %>,
+40:                 <%= station[ :coordinates ][ :lat ] %>,
+41:                 <%= station.[ :coordinates ][ :lng ] %>
+42:                 );
+43:             <% end -%>
+44:         <% end -%>
+
+    app/views/layouts/application.html.erb:61:in `compile'
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.2ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.1ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:23:38
+  Processing by HomeController#index as HTML
+ERROR: compiling _render_template__595535318_40596800_0 RAISED compile error
+/media/work/rubyshift/cnc/app/views/layouts/application.html.erb:59: syntax error, unexpected kENSURE, expecting $end
+Function body:           def _render_template__595535318_40596800_0(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "layouts/application";_old_output_buffer = output_buffer;;@output_buffer = ActionView::OutputBuffer.new; __in_erb_template=true ;@output_buffer.safe_concat('<!DOCTYPE html>
+<html>
+<head>
+  <title>Rlz</title>
+  ');@output_buffer.append= ( stylesheet_link_tag :all );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( javascript_include_tag :defaults );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  
+  <script 
+        src="http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=ABQIAAAAJyV1ORtpp9xhLyvSADHp1xRPdtMTe9TeYLcHs6Ihbwt_ci8wnRTKYW9rBdd7x_A0bp-DVbzp4BMhqw" 
+        type="text/javascript"></script>
+  
+  
+  <script type="text/javascript">
+      var geocoder = null;
+      var map = null;
+      
+      function addStationOnMap( id, color, name, lat, lng ) {
+        var options = {
+        title: \'#\' + id + \' \' + name
+        };
+
+        
+        var marker = new GMarker( new GLatLng( lat, lng ), options );
+        map.addOverlay( marker );            
+      }
+        
+
+      function MapInit() {
+        geocoder = new GClientGeocoder();
+        map = new GMap2( document.getElementById( "map" ) );
+        map.setCenter( new GLatLng( 50.464853086055115, 30.354784727096558100), 3 );
+        map.setUIToDefault();
+        map.disableScrollWheelZoom();   
+        
+');@output_buffer.append_if_string=          STATIONS.each do |station| 
+@output_buffer.safe_concat('            addStationOnMap(
+                ');@output_buffer.append= ( station[ :id ] );@output_buffer.safe_concat(',
+                ');@output_buffer.append= ( station[ :color ] );@output_buffer.safe_concat(',
+                ');@output_buffer.append= ( station[ :name ] );@output_buffer.safe_concat(',
+                ');@output_buffer.append= ( station[ :coordinates ][ :lat ] );@output_buffer.safe_concat(',
+                ');@output_buffer.append= ( station[ :coordinates ][ :lng ] );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('                );
+');             end 
+         end 
+@output_buffer.safe_concat('      }
+    </script>
+  
+  
+  ');@output_buffer.append= ( csrf_meta_tag );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  
+</head>
+<body>
+
+');@output_buffer.append= ( yield );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('
+</body>
+</html>
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, self.output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /media/work/rubyshift/cnc/app/views/layouts/application.html.erb:59:in `compile'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_view/template.rb:45:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications/instrumenter.rb:18:in `instrument'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications.rb:48:in `__send__'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications.rb:48:in `instrument'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_view/template.rb:44:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_view/render/layouts.rb:84:in `_render_layout'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_view/render/rendering.rb:61:in `_render_template'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications/instrumenter.rb:18:in `instrument'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications.rb:48:in `__send__'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications.rb:48:in `instrument'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_view/render/rendering.rb:55:in `_render_template'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_view/render/rendering.rb:25:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/rendering.rb:113:in `_render_template'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/rendering.rb:107:in `render_to_body'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/rendering.rb:100:in `render_to_string'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/rendering.rb:91:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/rendering.rb:17:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/local/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/instrumentation.rb:77:in `cleanup_view_runtime'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-3.0.0.beta3/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/instrumentation.rb:38:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/base.rb:153:in `process_action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/rendering.rb:11:in `process_action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications/instrumenter.rb:18:in `instrument'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications.rb:48:in `__send__'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/notifications.rb:48:in `instrument'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/instrumentation.rb:28:in `process_action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/callbacks.rb:18:in `process_action'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/callbacks.rb:433:in `_run__738958071__process_action__199225275__callbacks'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/callbacks.rb:404:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/callbacks.rb:404:in `_run_process_action_callbacks'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/callbacks.rb:88:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/callbacks.rb:88:in `run_callbacks'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/rescue.rb:8:in `process_action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/base.rb:123:in `process'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/abstract_controller/rendering.rb:39:in `process'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal.rb:84:in `dispatch'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_controller/metal.rb:124:in `action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/routing/route_set.rb:29:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/routing/route_set.rb:29:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-mount-0.6.3/lib/rack/mount/route_set.rb:148:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-mount-0.6.3/lib/rack/mount/code_generation.rb:89:in `recognize'
+/usr/local/lib/ruby/gems/1.8/gems/rack-mount-0.6.3/lib/rack/mount/code_generation.rb:66:in `optimized_each'
+/usr/local/lib/ruby/gems/1.8/gems/rack-mount-0.6.3/lib/rack/mount/code_generation.rb:88:in `recognize'
+/usr/local/lib/ruby/gems/1.8/gems/rack-mount-0.6.3/lib/rack/mount/route_set.rb:139:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/routing/route_set.rb:458:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-3.0.0.beta3/lib/active_record/query_cache.rb:31:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-3.0.0.beta3/lib/active_record/connection_adapters/abstract/query_cache.rb:35:in `cache'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-3.0.0.beta3/lib/active_record/query_cache.rb:11:in `cache'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-3.0.0.beta3/lib/active_record/query_cache.rb:30:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-3.0.0.beta3/lib/active_record/connection_adapters/abstract/connection_pool.rb:365:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/head.rb:14:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/methodoverride.rb:24:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/params_parser.rb:19:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/flash.rb:167:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/session/cookie_store.rb:107:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/cookies.rb:202:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/callbacks.rb:410:in `_run_call_callbacks'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/callbacks.rb:88:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-3.0.0.beta3/lib/active_support/callbacks.rb:88:in `run_callbacks'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/sendfile.rb:105:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/show_exceptions.rb:48:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/railties-3.0.0.beta3/lib/rails/rack/logger.rb:13:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/runtime.rb:17:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/lock.rb:11:in `synchronize'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/static.rb:30:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/railties-3.0.0.beta3/lib/rails/application.rb:132:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/railties-3.0.0.beta3/lib/rails/application.rb:81:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/railties-3.0.0.beta3/lib/rails/application.rb:81:in `method_missing'
+/usr/local/lib/ruby/gems/1.8/gems/railties-3.0.0.beta3/lib/rails/rack/log_tailer.rb:15:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/content_length.rb:13:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/handler/webrick.rb:48:in `service'
+/usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/handler/webrick.rb:14:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/server.rb:155:in `start'
+/usr/local/lib/ruby/gems/1.8/gems/railties-3.0.0.beta3/lib/rails/commands/server.rb:62:in `start'
+/usr/local/lib/ruby/gems/1.8/gems/railties-3.0.0.beta3/lib/rails/commands.rb:42
+script/rails:9:in `require'
+script/rails:9
+
+ActionView::Template::Error (compile error
+/media/work/rubyshift/cnc/app/views/layouts/application.html.erb:59: syntax error, unexpected kENSURE, expecting $end) on line #59 of /media/work/rubyshift/cnc/app/views/layouts/application.html.erb:
+56: </body>
+57: </html>
+
+    app/views/layouts/application.html.erb:59:in `compile'
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.7ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:23:54
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 20ms (Views: 19.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:25:03
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 20ms (Views: 19.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:25:27
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 19ms (Views: 18.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:25:46
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 20ms (Views: 19.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:26:36
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 19ms (Views: 18.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:26:42
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 21ms (Views: 20.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:30:12
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 20ms (Views: 19.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:30:27
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 19ms (Views: 19.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:30:43
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 19ms (Views: 19.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:31:36
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 20ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:31:44
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 19ms (Views: 19.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:31:48
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 20ms (Views: 19.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:35:03
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 20ms (Views: 19.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:36:43
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 19ms (Views: 19.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:36:47
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 19ms (Views: 18.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:39:56
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 19ms (Views: 19.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:40:13
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 20ms (Views: 19.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:41:06
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 19ms (Views: 18.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:48:05
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 19ms (Views: 19.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:48:42
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 17ms (Views: 16.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:49:57
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 17ms (Views: 17.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:50:33
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 90ms (Views: 90.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:51:36
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 17ms (Views: 16.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 19:59:39
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 17ms (Views: 16.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:00:28
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 17ms (Views: 16.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:01:08
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 16ms (Views: 16.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:01:38
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 17ms (Views: 16.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:09:01
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 18ms (Views: 17.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:10:06
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 17ms (Views: 16.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:10:21
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 17ms (Views: 16.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:10:47
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 17ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:10:59
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 17ms (Views: 16.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:14:43
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 17ms (Views: 16.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:15:40
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 17ms (Views: 17.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:15:55
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 17ms (Views: 16.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:17:13
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 17ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:39:38
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 18ms (Views: 17.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:40:20
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 17ms (Views: 17.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:40:23
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 17ms (Views: 16.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:40:47
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 17ms (Views: 16.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2010-05-21 20:41:21
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 19ms (Views: 18.8ms | ActiveRecord: 0.0ms)
