@@ -36,8 +36,14 @@ class Train < ActiveRecord::Base
     stations_from_0 = station_distances.select {|d| d < pos}
     
     return 0, 0
+    line_stations = STATIONS.select {|s| s[:color] == line_name}
+    point1 = line_stations[stations_from_0.size]
+    point2 = line_stations[stations_from_0.size + 1]
+    coords = train_coordinates(point1[:coordinates], point2[:coordinates], pos - stations_from_0.last)
+    {:lat => coords.first, :lng => coords.last}
     # TODO remove stub
     # line_name, index of station, distance from that station. should return {:lat => lat, :lng => lng}
+      
     #Coords.get(line_name, stations_from_0.size, pos - stations_from_0.last)
   end
 
