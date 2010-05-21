@@ -37,7 +37,17 @@ class Train < ActiveRecord::Base
     
     return 0, 0
     # TODO remove stub
+    # line_name, index of station, distance from that station. should return {:lat => lat, :lng => lng}
     #Coords.get(line_name, stations_from_0.size, pos - stations_from_0.last)
   end
+
+  def train_coordinates(point1, point2, train_dist)
+    delta = train_dist / dist(point1, point2)
+    [ point1[:lat] + (point2[:lat]-point1[:lat]) * delta, point1[:lng] + (point2[:lng]-point1[:lng]) * delta ]
+  end
+
+end
+
+
 
 end
