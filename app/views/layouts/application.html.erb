@@ -102,16 +102,16 @@
             $.each( trains, function( index, train ) {
                 
                 latlng = new GLatLng( train.lat, train.lng );
-                marker = trains_markers[ train.id ];
                 
-                if ( marker )
+                if ( train.id in trains_markers )
                     {
+                    marker = trains_markers[ train.id ];
                     marker.setLatLng( latlng );
                     }
                 else
                     {
-                    marker = new GMarker( latlng, { icon:yellow_icon } );
-                    map.addOverlay( marker );    
+                    trains_markers[ train.id ] = new GMarker( latlng, { icon:yellow_icon } );
+                    map.addOverlay( trains_markers[ train.id ] );   
                     }
             });
           });
