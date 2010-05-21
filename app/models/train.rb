@@ -40,7 +40,7 @@ class Train < ActiveRecord::Base
     point2 = line_stations[stations_from_0.size + 1]
     coords = train_coordinates(point1[:coordinates], point2[:coordinates], pos - stations_from_0.last)
     logger.error "-------------------------- #{coords.inspect}"
-    {:lat => coords.first, :lng => coords.last}
+    return coords
     # TODO remove stub
     # line_name, index of station, distance from that station. should return {:lat => lat, :lng => lng}
       
